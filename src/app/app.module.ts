@@ -6,6 +6,8 @@ import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AuthenticationModule } from './authentication/authentication.module';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -14,6 +16,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    AuthenticationModule,
     AppRoutingModule
   ],
   providers: [],
