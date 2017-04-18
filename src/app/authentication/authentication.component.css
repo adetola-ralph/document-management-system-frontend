@@ -1,0 +1,31 @@
+.container {
+  width: 70vw;
+  margin: 0 auto;
+  height: 90vh;
+  position: relative;
+  overflow: hidden;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.info-container {
+  background-image: -webkit-linear-gradient(#80E3D1 0%, #63D5C4 24%, #53C5B9 60%);
+  background-image: -o-linear-gradient(#80E3D1 0%, #63D5C4 24%, #53C5B9 60%);
+  background-image: linear-gradient(#80E3D1 0%, #63D5C4 24%, #53C5B9 60%);
+  position: absolute;
+  left: 0px;
+  height: 100%;
+  margin: 0px;
+  width: 50%;
+}
+
+.auth-container {
+  position: absolute;
+  height: 100%;
+  background: #3C3E52;
+  right: 0px;
+  margin: 0px;
+  width: 50%;
+
+}

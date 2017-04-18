@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'auth-display',
-  template: '<h2>Auth</h2>'
+  templateUrl: './authentication.component.html',
+  styleUrls: ['./authentication.component.css']
 })
-export class AuthenticationComponent { }
+export class AuthenticationComponent {
+  signup: boolean;
+
+  constructor() {
+    this.signup = false;
+  }
+}

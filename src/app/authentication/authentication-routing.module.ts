@@ -3,10 +3,10 @@ import { NgModule } from '@angular/core';
 
 import { AuthenticationComponent } from './authentication.component';
 
-var appRoutes: Routes = [
-    { 
-        path: 'auth', 
-        component: AuthenticationComponent 
+const appRoutes: Routes = [
+    {
+        path: 'auth',
+        component: AuthenticationComponent
     },
 ];
 
@@ -18,6 +18,4 @@ var appRoutes: Routes = [
         RouterModule
     ]
 })
-export class AuthenticationRoutingModule {
-
-}
+export class AuthenticationRoutingModule { }
