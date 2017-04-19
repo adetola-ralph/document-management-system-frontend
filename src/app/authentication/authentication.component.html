@@ -1,22 +1,26 @@
 <div class="outer-container">
   <div class="inner-container">
     <div class="info-container">
-      
+
     </div>
     <div class="auth-container">
       <div class="auth-inner-container">
         <div>
-          <md-tab-group [dynamicHeight]="true">
+          <md-tab-group [dynamicHeight]="true" (selectChange)="tabChange($event)">
             <md-tab label="Sign In">
               <div class="tab-content">
                 <form class="dark-theme">
                   <md-input-container class="input-full-width">
-                    <input mdInput placeholder="E-MAIL" required>
+                    <input mdInput placeholder="E-MAIL" required
+                    [(ngModel)]="signInInfo.email"
+                    name="signin-email">
                   </md-input-container>
                   <md-input-container class="input-full-width">
-                    <input mdInput placeholder="PASSWORD" type="password" required>
+                    <input mdInput placeholder="PASSWORD" type="password" required
+                    [(ngModel)]="signInInfo.password"
+                    name="signin-password">
                   </md-input-container>
-                  <button md-button class="auth">
+                  <button md-button class="auth" (click)="signIn()">
                     sign in
                   </button>
                 </form>
@@ -26,18 +30,32 @@
               <div class="tab-content">
                 <form class="dark-theme">
                   <md-input-container class="input-full-width">
-                    <input mdInput placeholder="FULLNAME" required>
+                    <input mdInput placeholder="FIRSTNAME" required
+                    [(ngModel)]="signUpInfo.firstname"
+                    name="signup-firstname">
                   </md-input-container>
                   <md-input-container class="input-full-width">
-                    <input mdInput placeholder="E-MAIL" required>
+                    <input mdInput placeholder="LASTNAME" required
+                    [(ngModel)]="signUpInfo.lastname"
+                    name="signup-lastname">
                   </md-input-container>
                   <md-input-container class="input-full-width">
-                    <input mdInput placeholder="USERNAME" required>
+                    <input mdInput placeholder="E-MAIL" required
+                    [(ngModel)]="signUpInfo.email"
+                    name="signup-email">
                   </md-input-container>
                   <md-input-container class="input-full-width">
-                    <input mdInput placeholder="PASSWORD" type="password" required>
+                    <input mdInput placeholder="USERNAME" required
+                    [(ngModel)]="signUpInfo.username"
+                    name="signup-username">
                   </md-input-container>
-                  <button md-button class="auth">
+                  <md-input-container class="input-full-width">
+                    <input mdInput placeholder="PASSWORD" type="password"
+                    required
+                    [(ngModel)]="signUpInfo.password"
+                    name="signup-password">
+                  </md-input-container>
+                  <button md-button class="auth" (click)="signUp()">
                     sign up
                   </button>
                 </form>
