@@ -51,8 +51,17 @@ button.auth {
   border-radius: 50px;
   color: #FFFFFF;
   font-size: 12px;
-  /* Button Background: */
+  font-weight: 200;
   background: #5BCDBF;
-  padding: 5px 35px;
   border: 0px;
+}
+
+.input-full-width {
+  width: 100%;
+  font-weight: 100;
+  font-size: 13px;
+}
+
+.tab-content {
+  margin-top: 20px;
 }

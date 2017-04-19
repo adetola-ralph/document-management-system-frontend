@@ -1,14 +1,48 @@
 <div class="outer-container">
   <div class="inner-container">
     <div class="info-container">
-      Show some scrolly stuff here
+      
     </div>
     <div class="auth-container">
       <div class="auth-inner-container">
         <div>
-          <md-tab-group>
-            <md-tab label="Tab 1">Content 1</md-tab>
-            <md-tab label="Tab 2">Content 2</md-tab>
+          <md-tab-group [dynamicHeight]="true">
+            <md-tab label="Sign In">
+              <div class="tab-content">
+                <form class="dark-theme">
+                  <md-input-container class="input-full-width">
+                    <input mdInput placeholder="E-MAIL" required>
+                  </md-input-container>
+                  <md-input-container class="input-full-width">
+                    <input mdInput placeholder="PASSWORD" type="password" required>
+                  </md-input-container>
+                  <button md-button class="auth">
+                    sign in
+                  </button>
+                </form>
+              </div>
+            </md-tab>
+            <md-tab label="Sign Up">
+              <div class="tab-content">
+                <form class="dark-theme">
+                  <md-input-container class="input-full-width">
+                    <input mdInput placeholder="FULLNAME" required>
+                  </md-input-container>
+                  <md-input-container class="input-full-width">
+                    <input mdInput placeholder="E-MAIL" required>
+                  </md-input-container>
+                  <md-input-container class="input-full-width">
+                    <input mdInput placeholder="USERNAME" required>
+                  </md-input-container>
+                  <md-input-container class="input-full-width">
+                    <input mdInput placeholder="PASSWORD" type="password" required>
+                  </md-input-container>
+                  <button md-button class="auth">
+                    sign up
+                  </button>
+                </form>
+              </div>
+            </md-tab>
           </md-tab-group>
         </div>
         <div class="auth-error" *ngIf="ifError">

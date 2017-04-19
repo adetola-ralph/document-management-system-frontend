@@ -2,3 +2,7 @@
 .mat-tab-group .mat-tab-nav-bar, .mat-tab-group .mat-tab-header {
   border-bottom: 0 solid transparent;
 }
+
+.mat-tab-label-container div.mat-tab-labels div.mat-tab-label.mat-ripple {
+  color: white;
+}
