@@ -1,6 +1,17 @@
-.container {
+.outer-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('/assets/auth.jpg');
+  background-size: cover;
+}
+
+.inner-container {
   width: 70vw;
-  margin: 0 auto;
+  /*margin: 0 auto;*/
   height: 90vh;
   position: relative;
   overflow: hidden;
@@ -27,5 +38,21 @@
   right: 0px;
   margin: 0px;
   width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.auth-inner-container {
+  width: 80%;
+}
+
+button.auth {
+  border-radius: 50px;
+  color: #FFFFFF;
+  font-size: 12px;
+  /* Button Background: */
+  background: #5BCDBF;
+  padding: 5px 35px;
+  border: 0px;
 }

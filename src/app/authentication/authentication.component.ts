@@ -7,8 +7,12 @@ import { Component } from '@angular/core';
 })
 export class AuthenticationComponent {
   signup: boolean;
+  errorMessage: string;
+  ifError: boolean;
 
   constructor() {
     this.signup = false;
+    this.errorMessage = '';
+    this.ifError = false;
   }
 }

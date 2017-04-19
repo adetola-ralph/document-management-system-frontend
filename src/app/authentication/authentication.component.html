@@ -1,31 +1,19 @@
-<div class="container">
-  <div>
+<div class="outer-container">
+  <div class="inner-container">
     <div class="info-container">
       Show some scrolly stuff here
     </div>
     <div class="auth-container">
-      <div>
-        <button>Sign in</button>
-        or
-        <button>Sign Up</button>
-      </div>
-      <div *ngIf="!signup" class="login">
+      <div class="auth-inner-container">
         <div>
-          <form>
-            <div class="form-group">
-              <label for="email">E-MAIL</label>
-              <input type="text" class="form-control" id="email" required>
-            </div>
-            <div class="form-group">
-              <label for="password">PASSWORD</label>
-              <input type="password" class="form-control" id="password" required>
-            </div>
-            <button type="submit" class="btn btn-success">Submit</button>
-          </form>
+          <md-tab-group>
+            <md-tab label="Tab 1">Content 1</md-tab>
+            <md-tab label="Tab 2">Content 2</md-tab>
+          </md-tab-group>
         </div>
-      </div>
-      <div *ngIf="signup" class="signup">
-        signup form
+        <div class="auth-error" *ngIf="ifError">
+          <p>{{errorMessage}}</p>
+        </div>
       </div>
     </div>
   </div>
