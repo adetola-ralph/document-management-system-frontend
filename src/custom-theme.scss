@@ -17,4 +17,9 @@ $custom-warn:    mat-palette($mat-red);
 
 // Create the theme object (a Sass map containing all of the palettes).
 $custom-theme: mat-light-theme($custom-primary, $custom-accent, $custom-warn);
+$dark-theme:   mat-dark-theme($custom-primary, $custom-accent, $custom-warn);
 @include angular-material-theme($custom-theme);
+
+.dark-theme {
+  @include angular-material-theme($dark-theme);
+}
