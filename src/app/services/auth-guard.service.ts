@@ -1,20 +1,31 @@
 import { Injectable } from '@angular/core';
-import { CanActivate } from '@angular/router';
+import { Router, CanActivate } from '@angular/router';
+
+
+import { AuthCheck } from './auth-check.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
+  constructor(private authCheck: AuthCheck, private router: Router) {}
+
   canActivate() {
-    // get token from localstorage
-    // check if there is a token and if it is valid
-    return true;
+    if (this.authCheck.isAuthenticated()) {
+      return true;
+    }
+    this.router.navigate(['/auth']);
+    return false;
   }
 }
 
+@Injectable()
 export class LoginGuard implements CanActivate {
+  constructor(private authCheck: AuthCheck, private router: Router) {}
+
   canActivate() {
-    // get token from localstorage
-    // check if there is a token and if it is valid
-    // for auth route
-    return true;
+    if (!this.authCheck.isAuthenticated()) {
+      return true;
+    }
+    this.router.navigate(['/']);
+    return false;
   }
 }

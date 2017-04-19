@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthGuard, LoginGuard } from './services/auth-guard.service';
+import { AuthCheck } from './services/auth-check.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthGuard, LoginGuard } from './services/auth-guard.service';
     AppRoutingModule
   ],
   providers: [
+    AuthCheck,
     AuthGuard,
     LoginGuard
   ],
