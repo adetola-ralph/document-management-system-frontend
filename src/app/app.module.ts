@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthGuard, LoginGuard } from './services/auth-guard.service';
@@ -13,7 +14,8 @@ import { AuthCheck } from './services/auth-check.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
