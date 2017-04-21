@@ -26,7 +26,6 @@
                     </ng-template>
                     <spinner *ngIf="loading" size="20"></spinner>
                   </button>
-                  <md-progress-spinner *ngIf="loading"></md-progress-spinner>
                 </form>
               </div>
             </md-tab>
@@ -70,9 +69,9 @@
               </div>
             </md-tab>
           </md-tab-group>
-        </div>
-        <div class="auth-error" *ngIf="ifError">
-          <p>{{errorMessage}}</p>
+          <div class="auth-error" *ngIf="ifError">
+            <md-icon>report_problem</md-icon> {{errorMessage}}
+          </div>
         </div>
       </div>
     </div>

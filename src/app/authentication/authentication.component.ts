@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { SignInUserInfo, SignUpUserInfo } from './authentication.helper';
 import { AuthenticationService } from './../services/authentication.service';
@@ -15,7 +16,7 @@ export class AuthenticationComponent {
   signUpInfo: SignUpUserInfo;
   loading: boolean;
 
-  constructor(private authService: AuthenticationService) {
+  constructor(private authService: AuthenticationService, private router: Router) {
     this.signup = false;
     this.errorMessage = '';
     this.ifError = false;
@@ -52,13 +53,20 @@ export class AuthenticationComponent {
   }
 
   signUp(): void {
+    this.ifError = false;
     this.loading = true;
     this.authService.signUp(this.signUpInfo)
         .subscribe(
-          (result ) => {
-            console.log(result);
+          (result) => {
+            localStorage.setItem('token', result.token);
+            this.router.navigate(['/']);
           },
-          error => console.log(error),
+          (error) => {
+            const body = JSON.parse(error._body);
+            this.errorMessage = body.message;
+            this.ifError = true;
+            this.loading = false;
+          },
           () => this.loading = false
         );
   }
