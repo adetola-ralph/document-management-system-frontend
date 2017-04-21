@@ -44,12 +44,22 @@ export class AuthenticationComponent {
   }
 
   signIn(): void {
-    // console.log(JSON.stringify(this.signInInfo));
-    // this.authService.signIn(this.signInInfo)
-    //     .subscribe(
-    //       result => console.log(result),
-    //       error => console.log(error)
-    //     );
+    this.ifError = false;
+    this.loading = true;
+    this.authService.signIn(this.signInInfo)
+        .subscribe(
+          (result) => {
+            localStorage.setItem('token', result.data);
+            this.router.navigate(['/']);
+          },
+          (error) => {
+            const body = JSON.parse(error._body);
+            this.errorMessage = body.message;
+            this.ifError = true;
+            this.loading = false;
+          },
+          () => this.loading = false
+        );
   }
 
   signUp(): void {
@@ -69,5 +79,10 @@ export class AuthenticationComponent {
           },
           () => this.loading = false
         );
+  }
+
+  signOut(): void {
+    localStorage.clear();
+    this.router.navigate(['/auth']);
   }
 }
