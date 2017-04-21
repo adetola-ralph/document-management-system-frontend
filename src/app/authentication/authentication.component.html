@@ -11,8 +11,8 @@
               <div class="tab-content">
                 <form class="dark-theme">
                   <md-input-container class="input-full-width">
-                    <input mdInput placeholder="E-MAIL" required
-                    [(ngModel)]="signInInfo.email"
+                    <input mdInput placeholder="USERNAME" required
+                    [(ngModel)]="signInInfo.username"
                     name="signin-email">
                   </md-input-container>
                   <md-input-container class="input-full-width">
@@ -21,8 +21,12 @@
                     name="signin-password">
                   </md-input-container>
                   <button md-button class="auth" (click)="signIn()">
-                    sign in
+                    <ng-template ngIf="!loading">
+                      sign in
+                    </ng-template>
+                    <spinner *ngIf="loading" size="20"></spinner>
                   </button>
+                  <md-progress-spinner *ngIf="loading"></md-progress-spinner>
                 </form>
               </div>
             </md-tab>
@@ -55,8 +59,12 @@
                     [(ngModel)]="signUpInfo.password"
                     name="signup-password">
                   </md-input-container>
-                  <button md-button class="auth" (click)="signUp()">
-                    sign up
+                  <button md-button class="auth"
+                    (click)="signUp()">
+                    <ng-template ngIf="!loading">
+                      sign up
+                    </ng-template>
+                    <spinner *ngIf="loading" size="20"></spinner>
                   </button>
                 </form>
               </div>

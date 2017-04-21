@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { SignInUserInfo, SignUpUserInfo } from './authentication.helper';
+import { AuthenticationService } from './../services/authentication.service';
 
 @Component({
   templateUrl: './authentication.component.html',
@@ -12,13 +13,14 @@ export class AuthenticationComponent {
   ifError: boolean;
   signInInfo: SignInUserInfo;
   signUpInfo: SignUpUserInfo;
+  loading: boolean;
 
-  constructor() {
+  constructor(private authService: AuthenticationService) {
     this.signup = false;
     this.errorMessage = '';
     this.ifError = false;
     this.signInInfo = {
-      email: '',
+      username: '',
       password: ''
     };
     this.signUpInfo = {
@@ -28,6 +30,7 @@ export class AuthenticationComponent {
       email: '',
       password: ''
     };
+    this.loading = false;
   }
 
   tabChange(event): void {
@@ -40,10 +43,23 @@ export class AuthenticationComponent {
   }
 
   signIn(): void {
-    console.log(JSON.stringify(this.signInInfo));
+    // console.log(JSON.stringify(this.signInInfo));
+    // this.authService.signIn(this.signInInfo)
+    //     .subscribe(
+    //       result => console.log(result),
+    //       error => console.log(error)
+    //     );
   }
 
   signUp(): void {
-    console.log(JSON.stringify(this.signUpInfo));
+    this.loading = true;
+    this.authService.signUp(this.signUpInfo)
+        .subscribe(
+          (result ) => {
+            console.log(result);
+          },
+          error => console.log(error),
+          () => this.loading = false
+        );
   }
 }
