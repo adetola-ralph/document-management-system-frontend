@@ -65,3 +65,11 @@ button.auth {
 .tab-content {
   margin-top: 20px;
 }
+
+.auth-error {
+  width: 100%;
+  color: #c0392b;
+  padding: 10px;
+  font-weight: 500;
+  font-family: sans-serif;
+}
