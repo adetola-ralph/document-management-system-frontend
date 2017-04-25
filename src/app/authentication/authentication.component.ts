@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { JwtHelper } from 'angular2-jwt';
 
 import { SignInUserInfo, SignUpUserInfo } from './authentication.helper';
 import { AuthenticationService } from './../services/authentication.service';
@@ -32,6 +33,29 @@ export class AuthenticationComponent {
       password: ''
     };
     this.loading = false;
+    this.handleSuccess = this.handleSuccess.bind(this);
+    this.handleError = this.handleError.bind(this);
+  }
+
+  handleError(error): void {
+    const body = JSON.parse(error._body);
+    this.errorMessage = body.message;
+    this.ifError = true;
+    this.loading = false;
+  }
+
+  handleSuccess(result): void {
+    localStorage.setItem('token', result.data);
+    /* set user information */
+    const jwtHelper = new JwtHelper();
+    const token = result.token || result.data;
+    const decodedData = jwtHelper.decodeToken(token);
+    localStorage.setItem('firstname', decodedData.firstname);
+    localStorage.setItem('lastname', decodedData.lastname);
+    localStorage.setItem('roleId', decodedData.roleId);
+    localStorage.setItem('id', decodedData.id);
+    /* set user information */
+    this.router.navigate(['/']);
   }
 
   tabChange(event): void {
@@ -48,16 +72,8 @@ export class AuthenticationComponent {
     this.loading = true;
     this.authService.signIn(this.signInInfo)
         .subscribe(
-          (result) => {
-            localStorage.setItem('token', result.data);
-            this.router.navigate(['/']);
-          },
-          (error) => {
-            const body = JSON.parse(error._body);
-            this.errorMessage = body.message;
-            this.ifError = true;
-            this.loading = false;
-          },
+          this.handleSuccess,
+          this.handleError,
           () => this.loading = false
         );
   }
@@ -67,16 +83,8 @@ export class AuthenticationComponent {
     this.loading = true;
     this.authService.signUp(this.signUpInfo)
         .subscribe(
-          (result) => {
-            localStorage.setItem('token', result.token);
-            this.router.navigate(['/']);
-          },
-          (error) => {
-            const body = JSON.parse(error._body);
-            this.errorMessage = body.message;
-            this.ifError = true;
-            this.loading = false;
-          },
+          this.handleSuccess,
+          this.handleError,
           () => this.loading = false
         );
   }
