@@ -1,0 +1,47 @@
+<div>
+  <md-sidenav-container>
+    <md-sidenav mode="side" opened="true">
+      <div class="icon">
+        Icon
+      </div>
+      <div class="nav-list-menu">
+        <md-nav-list>
+          <md-list-item>
+             <a md-line routerLink="/" routerLinkActive="active" class="nav-menu-item">Home</a>
+          </md-list-item>
+          <md-list-item>
+             <a md-line routerLinkActive="active" class="nav-menu-item">User Information</a>
+          </md-list-item>
+          <md-list-item>
+             <a md-line routerLinkActive="active" class="nav-menu-item">Signout</a>
+          </md-list-item>
+        </md-nav-list>
+      </div>
+    </md-sidenav>
+    <div class="my-content">
+      <div class="top-bar">
+        <span>
+          <md-icon>search</md-icon>
+        </span>
+        <span></span>
+        <span>
+          <md-icon>perm_identity</md-icon>
+          <span class="welcome-text">Hello, Oreofeoluwapo</span>
+          <md-icon class="more-info" [mdMenuTriggerFor]="menu">expand_more</md-icon>
+          <md-menu #menu="mdMenu" [overlapTrigger]="false">
+            <button md-menu-item>
+              <md-icon> settings</md-icon>
+              <span> User Info </span>
+            </button>
+            <button md-menu-item>
+              <md-icon> input </md-icon>
+              <span> Log out </span>
+            </button>
+          </md-menu>
+        </span>
+      </div>
+      Home content
+      <router-outlet></router-outlet>
+    </div>
+  </md-sidenav-container>
+</div>

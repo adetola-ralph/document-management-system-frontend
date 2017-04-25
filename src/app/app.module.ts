@@ -6,8 +6,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule } from '@angular/material';
 
 import { AppRoutingModule } from './app-routing.module';
+import { HomeModule } from './home/home.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home.component';
+// import { HomeComponent } from './home.component';
 
 import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthGuard, LoginGuard } from './services/auth-guard.service';
@@ -16,8 +17,7 @@ import { AuthenticationService } from './services/authentication.service';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomeComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +26,7 @@ import { AuthenticationService } from './services/authentication.service';
     MdButtonModule,
     BrowserAnimationsModule,
     AuthenticationModule,
+    HomeModule,
     AppRoutingModule
   ],
   providers: [
