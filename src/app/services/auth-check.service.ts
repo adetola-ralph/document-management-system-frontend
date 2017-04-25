@@ -13,6 +13,7 @@ export class AuthCheck {
     if (token && !this.jwtHelper.isTokenExpired(token)) {
       return true;
     }
+    localStorage.clear();
     return false;
   }
 }
