@@ -12,6 +12,7 @@ md-sidenav {
 .my-content {
   background-color: #DDE5EA;
   position: fixed;
+  overflow: scroll;
 }
 
 .top-bar {
@@ -23,8 +24,17 @@ md-sidenav {
   justify-content: space-between;
 }
 
+.icon {
+  height: 50px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .welcome-text {
   vertical-align: super;
+  text-transform: capitalize;
 }
 
 .more-info {
@@ -40,4 +50,12 @@ md-sidenav {
   /*border-left: 5px solid #5BCDBF;
   margin-left: 10px !important;*/
   color: #5BCDBF;
+  overflow: scroll;
+}
+
+.inner-content {
+  width: 50vw;
+  height: 50vh;
+  background-color: red;
+  margin: 50px auto 0;
 }
