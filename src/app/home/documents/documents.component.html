@@ -1,0 +1,61 @@
+<div>
+  <div class="action-bar">
+    <span class="title"></span>
+    <span class="action-buttons"></span>
+  </div>
+  <div class="main-view">
+    <div class="title-bar">
+      <p>my documents</p>
+      <button md-button class="call-to-action">
+        <md-icon>insert_drive_file</md-icon> create
+      </button>
+    </div>
+    <div *ngIf="loading">
+      <!-- for loading -->
+      <div class="loading-container">
+        <md-spinner></md-spinner>
+      </div>
+    </div>
+    <div *ngIf="!loading && noDocument">
+      <p class="no-document">
+        Sorry you've got no document. Create one by clicking on the create
+        button above.
+      </p>
+
+      <!-- if no document -->
+    </div>
+    <div *ngIf="!loading && !noDocument">
+      <!-- document table -->
+      <div>
+        <table>
+          <tbody>
+            <tr>
+              <th>Title</th>
+              <th>Created</th>
+              <th>Last Updated</th>
+              <th></th>
+            </tr>
+            <tr *ngFor="let document of documents">
+              <td>{{document.title}}</td>
+              <td>{{document.createdAt | amDateFormat:'LL'}}</td>
+              <td>{{document.updatedAt | amTimeAgo}}</td>
+              <td>
+                <div class="action-box">
+                  <button md-icon-button mdTooltip="view document">
+                    <md-icon>visibility</md-icon>
+                  </button>
+                  <button md-icon-button mdTooltip="edit document">
+                    <md-icon>edit</md-icon>
+                  </button>
+                  <button md-icon-button mdTooltip="delete document">
+                    <md-icon>delete</md-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

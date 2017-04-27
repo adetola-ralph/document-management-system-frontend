@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MdButtonModule } from '@angular/material';
+import { MomentModule } from 'angular2-moment';
 
 import { AppRoutingModule } from './app-routing.module';
 import { HomeModule } from './home/home.module';
@@ -14,6 +15,7 @@ import { AuthenticationModule } from './authentication/authentication.module';
 import { AuthGuard, LoginGuard } from './services/auth-guard.service';
 import { AuthCheck } from './services/auth-check.service';
 import { AuthenticationService } from './services/authentication.service';
+import { DocumentService } from './services/documents.service';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { AuthenticationService } from './services/authentication.service';
     MdButtonModule,
     BrowserAnimationsModule,
     AuthenticationModule,
+    MomentModule,
     HomeModule,
     AppRoutingModule
   ],
@@ -33,7 +36,8 @@ import { AuthenticationService } from './services/authentication.service';
     AuthCheck,
     AuthGuard,
     LoginGuard,
-    AuthenticationService
+    AuthenticationService,
+    DocumentService
   ],
   bootstrap: [AppComponent]
 })

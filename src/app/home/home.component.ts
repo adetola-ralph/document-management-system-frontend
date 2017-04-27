@@ -1,18 +1,26 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   userInfo: UserInformation;
-  constructor() {}
+  constructor() { }
+
+  ngOnInit() {
+    this.userInfo = {
+      firstname: localStorage.getItem('firstname'),
+      lastname: localStorage.getItem('lastname'),
+      roleid: localStorage.getItem('roleId'),
+      id: parseInt(localStorage.getItem('id'), 10)
+    };
+  }
 }
 
 interface UserInformation {
-  username: string;
   firstname: string;
   lastname: string;
-  email: string;
+  roleid: string;
   id: number;
 }
