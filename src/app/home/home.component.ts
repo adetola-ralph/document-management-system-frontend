@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from './../services/authentication.service';
 
 @Component({
   templateUrl: './home.component.html',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   userInfo: UserInformation;
-  constructor() { }
+  constructor(private authService: AuthenticationService) {
+    this.signOut = this.signOut.bind(this);
+  }
 
   ngOnInit() {
     this.userInfo = {
@@ -15,6 +18,10 @@ export class HomeComponent implements OnInit {
       roleid: localStorage.getItem('roleId'),
       id: parseInt(localStorage.getItem('id'), 10)
     };
+  }
+
+  signOut(): void {
+    this.authService.signOut();
   }
 }
 

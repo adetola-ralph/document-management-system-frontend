@@ -13,7 +13,7 @@
              <a md-line routerLinkActive="active" class="nav-menu-item">User Information</a>
           </md-list-item>
           <md-list-item>
-             <a md-line routerLinkActive="active" class="nav-menu-item">Signout</a>
+             <a md-line (click)="signOut()" class="nav-menu-item">Signout</a>
           </md-list-item>
         </md-nav-list>
       </div>
@@ -33,9 +33,9 @@
               <md-icon> settings</md-icon>
               <span> User Info </span>
             </button>
-            <button md-menu-item>
+            <button md-menu-item (click)="signOut()">
               <md-icon> input </md-icon>
-              <span> Log out </span>
+              <span> Signout </span>
             </button>
           </md-menu>
         </span>
