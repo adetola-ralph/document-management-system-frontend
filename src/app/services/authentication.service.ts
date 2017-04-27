@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { JwtHelper } from 'angular2-jwt';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { Router} from '@angular/router';
 import 'rxjs/add/operator/map';
 
 import { SignInUserInfo, SignUpUserInfo } from './../authentication/authentication.helper';
@@ -11,7 +12,7 @@ export class AuthenticationService {
   apiLoginLink: string;
   apiSignupLink: string;
   jwtHelper: JwtHelper;
-  constructor(private http: Http) {
+  constructor(private http: Http, private router: Router) {
     this.jwtHelper = new JwtHelper();
     this.apiLoginLink = 'http://localhost:8080/api/users/login';
     this.apiSignupLink = 'http://localhost:8080/api/users';
@@ -25,6 +26,11 @@ export class AuthenticationService {
   signUp(signUpObject: SignUpUserInfo): Observable<any> {
     return this.http.post(this.apiSignupLink, signUpObject)
                .map(res => res.json());
+  }
+
+  signOut(): void {
+    localStorage.clear();
+    this.router.navigate(['/auth'], { replaceUrl: true });
   }
 }
 
