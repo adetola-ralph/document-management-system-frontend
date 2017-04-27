@@ -25,7 +25,7 @@ export class LoginGuard implements CanActivate {
     if (!this.authCheck.isAuthenticated()) {
       return true;
     }
-    this.router.navigate(['/']);
+    this.router.navigate(['/'], { replaceUrl: true });
     return false;
   }
 }
