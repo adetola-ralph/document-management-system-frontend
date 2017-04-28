@@ -49,4 +49,8 @@ export class DocumentService {
   // editDocument(): Observable<Object> {
   //
   // }
+
+  // createDocument(): Observable<> {
+  //
+  // }
 }
