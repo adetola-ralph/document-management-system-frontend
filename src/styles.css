@@ -50,3 +50,9 @@ button.call-to-action {
   border-color: #1E88E5;
   background: rgba(227,242,253,0.24);
 }
+
+.private-doc {
+  background-color: rgba(231, 76, 60, 0.3);
+  color: #fff;
+  font-weight: 400;
+}
