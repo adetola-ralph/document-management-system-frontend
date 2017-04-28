@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AuthGuard } from './../services/auth-guard.service';
 import { HomeComponent } from './home.component';
 import { DocumentComponent } from './documents/documents.component';
+import { NewDocumentComponent } from './documents/NewDocument.component';
 
 const homeRoutes: Routes = [
   {
@@ -20,6 +21,11 @@ const homeRoutes: Routes = [
         path: '',
         redirectTo: 'documents',
         pathMatch: 'full'
+      },
+      {
+        path: 'new',
+        component: NewDocumentComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }
