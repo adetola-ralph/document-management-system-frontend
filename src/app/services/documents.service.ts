@@ -3,6 +3,8 @@ import { Http, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
+import { NewDocument } from './../home/documents/newDocument';
+
 @Injectable()
 /**
  * document service class that abstracts actions taken on the documents
@@ -50,7 +52,10 @@ export class DocumentService {
   //
   // }
 
-  // createDocument(): Observable<> {
-  //
-  // }
+  createDocument(newDoc: NewDocument): Observable<any> {
+    const link = `http://localhost:8080/api/documents/`;
+    const headers = new Headers();
+    headers.append('x-access-token', this.token);
+    return this.http.post(link, newDoc, { headers }).map(response => response.json());
+  }
 }
