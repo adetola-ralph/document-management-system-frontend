@@ -12,10 +12,8 @@ import { NewDocument } from './../home/documents/newDocument';
  * @return {null}
  */
 export class DocumentService {
-  userId: string;
   token: string;
   constructor(private http: Http) {
-    this.userId = localStorage.getItem('id');
     this.token = localStorage.getItem('token');
     this.getDocuments = this.getDocuments.bind(this);
   }
@@ -24,8 +22,9 @@ export class DocumentService {
    * get all user owned document
    * @return {Observable<Object>} Observable containing the response object
    */
-  getDocuments(): Observable<any> {
-    const link = `http://localhost:8080/api/users/${this.userId}/documents/`;
+  getDocuments(userId: any): Observable<any> {
+    this.token = localStorage.getItem('token');
+    const link = `http://localhost:8080/api/users/${userId}/documents/`;
     const headers = new Headers();
     headers.append('x-access-token', this.token);
     return this.http.get(link, { headers }).map(response => response.json());
@@ -53,6 +52,7 @@ export class DocumentService {
   // }
 
   createDocument(newDoc: NewDocument): Observable<any> {
+    this.token = localStorage.getItem('token');
     const link = `http://localhost:8080/api/documents/`;
     const headers = new Headers();
     headers.append('x-access-token', this.token);

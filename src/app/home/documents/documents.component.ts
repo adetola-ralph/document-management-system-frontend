@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+  import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DocumentService } from './../../services/documents.service';
 import { Document } from './document';
@@ -20,8 +20,9 @@ export class DocumentComponent implements OnInit {
   }
 
   ngOnInit() {
+    const userId = localStorage.getItem('id');
     this.loading = true;
-    this.docService.getDocuments().toPromise().then((result) => {
+    this.docService.getDocuments(userId).toPromise().then((result) => {
       this.documents = result.data.map((item) => {
         item.isPublic = () => {
           return item.access === 'public';
