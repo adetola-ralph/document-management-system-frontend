@@ -26,12 +26,17 @@
         <table>
           <tbody>
             <tr>
+              <th></th>
               <th>Title</th>
               <th>Created</th>
               <th>Last Updated</th>
               <th></th>
             </tr>
-            <tr *ngFor="let document of documents">
+            <tr *ngFor="let document of documents" [class.private-doc]="!document.isPublic()">
+              <td>
+                <md-icon *ngIf="document.isPublic()" mdTooltip="Public">visibility</md-icon>
+                <md-icon *ngIf="!document.isPublic()" mdTooltip="Private">visibility_off</md-icon>
+              </td>
               <td>{{document.title}}</td>
               <td>{{document.createdAt | amDateFormat:'LL'}}</td>
               <td>{{document.updatedAt | amTimeAgo}}</td>
