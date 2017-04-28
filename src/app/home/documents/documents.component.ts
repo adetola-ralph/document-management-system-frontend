@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { DocumentService } from './../../services/documents.service';
 import { Document } from './document';
 import 'rxjs/add/operator/toPromise';
@@ -12,7 +13,7 @@ export class DocumentComponent implements OnInit {
   noDocument: boolean;
   documents: Array<Document>;
 
-  constructor(private docService: DocumentService) {
+  constructor(private docService: DocumentService, private router: Router) {
     this.loading = false;
     this.noDocument = false;
     this.documents = [];
@@ -37,5 +38,9 @@ export class DocumentComponent implements OnInit {
       this.noDocument = true;
       this.loading = false;
     });
+  }
+
+  newDocument(): void {
+    this.router.navigate(['/home/new']);
   }
 }

@@ -9,11 +9,15 @@
     </div>
     <div>
       <md-card>
+        <div class="alert is-critical" *ngIf="ifError">
+          <md-icon style="color:#D32F2F;">warning</md-icon>
+          {{errorMessage}}
+        </div>
         <div class="create-edit-form">
           <form>
             <div class="form-div">
               <md-input-container class="input-full-width">
-                <input mdInput placeholder="Title" required
+                <input mdInput placeholder="Title"
                 name="document-title" [(ngModel)]="document.title">
               </md-input-container>
             </div>
@@ -35,11 +39,9 @@
               </md-select>
             </div>
             <div class="form-div">
-              <button md-button class="call-to-action">
-                <!-- <ng-template> -->
-                  Create
-                <!-- </ng-template> -->
-                <spinner size="20"></spinner>
+              <button md-button class="call-to-action" (click)="createDocument()">
+                Create
+                <spinner *ngIf="loading" size="20" ></spinner>
               </button>
             </div>
           </form>
