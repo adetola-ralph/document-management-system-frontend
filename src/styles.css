@@ -15,11 +15,38 @@
 }
 
 button.call-to-action {
-  border-radius: 50px;
-  color: #FFFFFF;
-  font-size: 12px;
-  font-weight: 200;
-  background: #5BCDBF;
-  border: 0px;
-  text-transform: capitalize;
+  border-radius: 50px !important;
+  color: #FFFFFF !important;
+  font-size: 12px !important;
+  font-weight: 200 !important;
+  background: #5BCDBF !important;
+  border: 0px !important;
+  text-transform: capitalize !important;
+}
+
+.alert {
+  box-shadow: 0 2px 2px rgba(0,0,0,0.24), 0 0 2px rgba(0,0,0,0.12);
+  border-width: 2px;
+  border-style: solid;
+  padding: 8px 16px;
+  line-height: 24px;
+  font-size: 14px;
+  border-radius: 4px;
+  color: #455A64;
+  margin-bottom: 24px;
+}
+
+.is-critical {
+  border-color: #D32F2F;
+  background: rgba(255,235,238,0.24);
+}
+
+.is-important {
+  border-color: #FFA000;
+  background: rgba(255,248,225,0.24);
+}
+
+.is-helpful {
+  border-color: #1E88E5;
+  background: rgba(227,242,253,0.24);
 }

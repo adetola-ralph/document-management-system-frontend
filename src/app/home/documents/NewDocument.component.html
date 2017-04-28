@@ -1,0 +1,52 @@
+<div>
+  <div class="main-view">
+    <div class="title-bar">
+      <p *ngIf="create">create new document</p>
+      <p *ngIf="!create">edit document #</p>
+      <button md-icon-button *ngIf="!create">
+        <md-icon>insert_drive_file</md-icon>
+      </button>
+    </div>
+    <div>
+      <md-card>
+        <div class="alert is-critical" *ngIf="ifError">
+          <md-icon style="color:#D32F2F;">warning</md-icon>
+          {{errorMessage}}
+        </div>
+        <div class="create-edit-form">
+          <form>
+            <div class="form-div">
+              <md-input-container class="input-full-width">
+                <input mdInput placeholder="Title"
+                name="document-title" [(ngModel)]="document.title">
+              </md-input-container>
+            </div>
+            <div class="form-div">
+              <md-input-container class="input-full-width">
+                <textarea mdInput placeholder="Content" name="document-content"
+                rows="15" [(ngModel)]="document.content"></textarea>
+              </md-input-container>
+            </div>
+            <div class="form-div">
+              <md-select placeholder="Document Access" name="document-access"
+                [(ngModel)]="document.access">
+                <md-option value="public">
+                  Public
+                </md-option>
+                <md-option value="private">
+                  Private
+                </md-option>
+              </md-select>
+            </div>
+            <div class="form-div">
+              <button md-button class="call-to-action" (click)="createDocument()">
+                Create
+                <spinner *ngIf="loading" size="20" ></spinner>
+              </button>
+            </div>
+          </form>
+        </div>
+      </md-card>
+    </div>
+  </div>
+</div>

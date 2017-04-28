@@ -85,3 +85,9 @@ button[md-icon-button] .mat-icon {
   width: 100px;
   margin: 50px auto 0;
 }
+
+.input-full-width {
+  width: 100%;
+  font-weight: 100;
+  font-size: 13px;
+}
