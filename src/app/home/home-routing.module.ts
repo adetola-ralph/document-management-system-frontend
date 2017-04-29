@@ -5,6 +5,7 @@ import { AuthGuard } from './../services/auth-guard.service';
 import { HomeComponent } from './home.component';
 import { DocumentComponent } from './documents/documents.component';
 import { NewDocumentComponent } from './documents/NewDocument.component';
+import { ViewDocumentComponent } from './documents/viewDocument.component';
 
 const homeRoutes: Routes = [
   {
@@ -25,6 +26,11 @@ const homeRoutes: Routes = [
       {
         path: 'new',
         component: NewDocumentComponent,
+        canActivate: [AuthGuard]
+      },
+      {
+        path: 'view/:id',
+        component: ViewDocumentComponent,
         canActivate: [AuthGuard]
       }
     ]
