@@ -30,6 +30,7 @@ export class DocumentComponent implements OnInit {
         item.isOwner = (userId) => {
           return parseInt(userId, 10) === parseInt(item.ownerId, 10);
         };
+        item.documentId = item.id;
         return item;
       });
       this.noDocument = false;
@@ -43,5 +44,9 @@ export class DocumentComponent implements OnInit {
 
   newDocument(): void {
     this.router.navigate(['/home/new']);
+  }
+
+  viewDocument(id: number): void {
+    this.router.navigate([`/home/view`, id]);
   }
 }
