@@ -9,12 +9,14 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { DocumentComponent } from './documents/documents.component';
 import { NewDocumentComponent } from './documents/NewDocument.component';
+import { ViewDocumentComponent } from './documents/viewDocument.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     DocumentComponent,
-    NewDocumentComponent
+    NewDocumentComponent,
+    ViewDocumentComponent
   ],
   imports: [
     CommonModule,
