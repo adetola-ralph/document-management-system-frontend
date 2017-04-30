@@ -2,7 +2,7 @@ export interface Document {
   access: string;
   content: string;
   createdAt: string; // this might change
-  updateAt: string; // this also
+  updatedAt: string; // this also
   documentId: string | number;
   ownerId: string | number;
   title: string;
