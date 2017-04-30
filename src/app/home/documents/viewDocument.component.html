@@ -1,0 +1,30 @@
+<div>
+  <div class="main-view">
+    <div class="title-bar">
+      <p>Document #{{documentId}}</p>
+      <div [hidden]="!document.isOwner(userId)">
+        <button md-icon-button>
+        <md-icon>edit</md-icon>
+        </button>
+        <button md-icon-button>
+          <md-icon>delete</md-icon>
+        </button>
+      </div>
+    </div>
+    <div>
+      <md-card>
+        <div class="alert is-critical" *ngIf="ifError">
+          <md-icon style="color:#D32F2F;">warning</md-icon>
+          {{errorMessage}}
+        </div>
+        <div *ngIf="!ifError" class="doc-content">
+          <div>Title: {{document.title}}</div>
+          <div>Created at: {{document.createdAt | amDateFormat:'LL'}}</div>
+          <div>Updated at: {{document.updatedAt | amTimeAgo}}</div>
+          <div>Content</div>
+          <div>{{document.content}}</div>
+        </div>
+      </md-card>
+    </div>
+  </div>
+</div>

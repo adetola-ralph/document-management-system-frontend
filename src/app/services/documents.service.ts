@@ -20,7 +20,7 @@ export class DocumentService {
 
   /**
    * get all user owned document
-   * @return {Observable<Object>} Observable containing the response object
+   * @return {Observable<any>} Observable containing the response object
    */
   getDocuments(userId: any): Observable<any> {
     this.token = localStorage.getItem('token');
@@ -29,10 +29,18 @@ export class DocumentService {
     headers.append('x-access-token', this.token);
     return this.http.get(link, { headers }).map(response => response.json());
   }
-
-  // getDocument(docId: number): Observable<Object> {
-  //
-  // }
+/**
+ * get document with the specified document id
+ * @param  {number}          docId id of document to be retrieved
+ * @return {Observable<any>}       Observable containing the response object
+ */
+  getDocument(docId: number): Observable<any> {
+    this.token = localStorage.getItem('token');
+    const link = `http://localhost:8080/api/documents/${docId}`;
+    const headers = new Headers();
+    headers.append('x-access-token', this.token);
+    return this.http.get(link, { headers }).map(response => response.json());
+  }
   //
   // deleteDocument(docId: number): Observable<Object> {
   //
