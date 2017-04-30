@@ -35,8 +35,8 @@ export class ViewDocumentComponent implements OnInit {
       updatedAt: '',
       ownerId: '',
       title: '',
-      isPublic: () => { return true; },
-      isOwner: (userId: string) => { return true; }
+      isPublic: () => { return false; },
+      isOwner: (userId: string) => { return false; }
     };
   }
 
