@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 
 import { DocumentService } from './../../services/documents.service';
 import { Document } from './document';
@@ -22,7 +23,9 @@ export class ViewDocumentComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private docService: DocumentService
+    private docService: DocumentService,
+    private router: Router,
+    private snackbar: MdSnackBar
   ) {
     this.userId = 0;
     this.ifError = false;
@@ -70,6 +73,20 @@ export class ViewDocumentComponent implements OnInit {
              this.ifError = true;
              this.errorMessage = error.message;
            });
+    });
+  }
+
+  deleteDocument(id: number): void {
+    this.docService.deleteDocument(id).toPromise().then((result) => {
+      this.snackbar.open('Document Deleted', '', {
+        duration: 3000
+      });
+      this.router.navigate(['/home/documents']);
+    }).catch((err) => {
+      const error = err.json();
+      this.snackbar.open(error.message, '', {
+        duration: 3000
+      });
     });
   }
 }

@@ -1,5 +1,6 @@
   import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 import { DocumentService } from './../../services/documents.service';
 import { Document } from './document';
 import 'rxjs/add/operator/toPromise';
@@ -13,15 +14,32 @@ export class DocumentComponent implements OnInit {
   noDocument: boolean;
   documents: Array<Document>;
 
-  constructor(private docService: DocumentService, private router: Router) {
+  constructor(
+    private docService: DocumentService,
+    private router: Router,
+    private snackbar: MdSnackBar
+  ) {
     this.loading = false;
     this.noDocument = false;
     this.documents = [];
+    this.getDocument = this.getDocument.bind(this);
   }
 
   ngOnInit() {
-    const userId = localStorage.getItem('id');
     this.loading = true;
+    this.getDocument();
+  }
+
+  newDocument(): void {
+    this.router.navigate(['/home/new']);
+  }
+
+  viewDocument(id: number): void {
+    this.router.navigate([`/home/view`, id]);
+  }
+
+  getDocument(): void {
+    const userId = localStorage.getItem('id');
     this.docService.getDocuments(userId).toPromise().then((result) => {
       this.documents = result.data.map((item) => {
         item.isPublic = () => {
@@ -42,11 +60,17 @@ export class DocumentComponent implements OnInit {
     });
   }
 
-  newDocument(): void {
-    this.router.navigate(['/home/new']);
-  }
-
-  viewDocument(id: number): void {
-    this.router.navigate([`/home/view`, id]);
+  deleteDocument(id: number): void {
+    this.docService.deleteDocument(id).toPromise().then((result) => {
+      this.snackbar.open('Document Deleted', '', {
+        duration: 3000
+      });
+      this.getDocument();
+    }).catch((err) => {
+      const error = err.json();
+      this.snackbar.open(error.message, '', {
+        duration: 3000
+      });
+    });
   }
 }
