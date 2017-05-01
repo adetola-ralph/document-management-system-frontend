@@ -2,7 +2,7 @@
   <div class="main-view">
     <div class="title-bar">
       <p *ngIf="create">create new document</p>
-      <p *ngIf="!create">edit document #</p>
+      <p *ngIf="!create">edit document #{{documentId}}</p>
       <button md-icon-button *ngIf="!create">
         <md-icon>insert_drive_file</md-icon>
       </button>
@@ -13,7 +13,7 @@
           <md-icon style="color:#D32F2F;">warning</md-icon>
           {{errorMessage}}
         </div>
-        <div class="create-edit-form">
+        <div class="create-edit-form" [hidden]="!create && ifError">
           <form>
             <div class="form-div">
               <md-input-container class="input-full-width">
@@ -39,8 +39,14 @@
               </md-select>
             </div>
             <div class="form-div">
-              <button md-button class="call-to-action" (click)="createDocument()">
+              <button md-button class="call-to-action" (click)="createDocument()"
+                *ngIf="create">
                 Create
+                <spinner *ngIf="loading" size="20" ></spinner>
+              </button>
+              <button md-button class="call-to-action" *ngIf="!create"
+                (click)="editDocument()">
+                Edit
                 <spinner *ngIf="loading" size="20" ></spinner>
               </button>
             </div>

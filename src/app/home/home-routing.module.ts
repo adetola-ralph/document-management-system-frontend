@@ -32,6 +32,11 @@ const homeRoutes: Routes = [
         path: 'view/:id',
         component: ViewDocumentComponent,
         canActivate: [AuthGuard]
+      },
+      {
+        path: 'edit/:id',
+        component: NewDocumentComponent,
+        canActivate: [AuthGuard]
       }
     ]
   }

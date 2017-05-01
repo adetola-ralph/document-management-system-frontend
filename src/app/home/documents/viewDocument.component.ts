@@ -45,7 +45,6 @@ export class ViewDocumentComponent implements OnInit {
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-       console.log(params['id']);
        this.documentId = +params['id'];
        this.userId = parseInt(localStorage.getItem('id'), 10);
        this.docService.getDocument(this.documentId)
@@ -88,5 +87,9 @@ export class ViewDocumentComponent implements OnInit {
         duration: 3000
       });
     });
+  }
+
+  editDocument(id: number): void {
+    this.router.navigate([`/home/edit`, id]);
   }
 }
