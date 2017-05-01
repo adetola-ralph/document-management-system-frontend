@@ -59,9 +59,13 @@ export class DocumentService {
   //
   // }
 
-  // editDocument(): Observable<Object> {
-  //
-  // }
+  editDocument(docId: number, newDoc: NewDocument): Observable<Object> {
+    this.token = localStorage.getItem('token');
+    const link = `http://localhost:8080/api/documents/${docId}`;
+    const headers = new Headers();
+    headers.append('x-access-token', this.token);
+    return this.http.put(link, newDoc, { headers }).map(response => response.json());
+  }
 
   createDocument(newDoc: NewDocument): Observable<any> {
     this.token = localStorage.getItem('token');
