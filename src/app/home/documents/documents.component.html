@@ -42,14 +42,16 @@
               <td>{{document.updatedAt | amTimeAgo}}</td>
               <td>
                 <div class="action-box">
-                  <button md-icon-button mdTooltip="view document" (click)="viewDocument(document.documentId)">
+                  <button md-icon-button mdTooltip="view document"
+                    (click)="viewDocument(document.documentId)">
                     <md-icon>visibility</md-icon>
                   </button>
-                  <button md-icon-button mdTooltip="edit document">
+                  <button md-icon-button mdTooltip="edit document"
+                    (click)="editDocument(document.documentId)">
                     <md-icon>edit</md-icon>
                   </button>
                   <button md-icon-button mdTooltip="delete document"
-                    (click)="deleteDocument(document.documentId)"> 
+                    (click)="deleteDocument(document.documentId)">
                     <md-icon>delete</md-icon>
                   </button>
                 </div>
