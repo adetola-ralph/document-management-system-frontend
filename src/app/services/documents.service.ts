@@ -41,10 +41,14 @@ export class DocumentService {
     headers.append('x-access-token', this.token);
     return this.http.get(link, { headers }).map(response => response.json());
   }
-  //
-  // deleteDocument(docId: number): Observable<Object> {
-  //
-  // }
+
+  deleteDocument(docId: number): Observable<Object> {
+    this.token = localStorage.getItem('token');
+    const link = `http://localhost:8080/api/documents/${docId}`;
+    const headers = new Headers();
+    headers.append('x-access-token', this.token);
+    return this.http.delete(link, { headers }).map(response => response.json());
+  }
 
   /**
    * get all documents accessible to the user, this includes
