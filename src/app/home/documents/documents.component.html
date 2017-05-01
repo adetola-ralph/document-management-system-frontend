@@ -48,7 +48,8 @@
                   <button md-icon-button mdTooltip="edit document">
                     <md-icon>edit</md-icon>
                   </button>
-                  <button md-icon-button mdTooltip="delete document">
+                  <button md-icon-button mdTooltip="delete document"
+                    (click)="deleteDocument(document.documentId)"> 
                     <md-icon>delete</md-icon>
                   </button>
                 </div>
