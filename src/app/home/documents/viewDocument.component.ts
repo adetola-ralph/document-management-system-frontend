@@ -88,4 +88,8 @@ export class ViewDocumentComponent implements OnInit {
       });
     });
   }
+
+  editDocument(id: number): void {
+    this.router.navigate([`/home/edit`, id]);
+  }
 }

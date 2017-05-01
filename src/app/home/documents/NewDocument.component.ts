@@ -57,7 +57,7 @@ export class NewDocumentComponent implements OnInit {
                 this.document.access = result.data.access;
               } else {
                 this.ifError = true;
-                this.errorMessage = 'You cannot edit this document';
+                this.errorMessage = 'You\'re not authorised to access this document';
               }
             }).catch((err) => {
               const error = err.json();
@@ -94,6 +94,23 @@ export class NewDocumentComponent implements OnInit {
   }
 
   editDocument(): void {
-
+      this.loading = true;
+      this.docService.editDocument(this.documentId, this.document).toPromise()
+          .then((result) => {
+            this.loading = false;
+            console.log(result);
+            this.snackbar.open('Document Edited', '', {
+              duration: 3000
+            });
+          }).catch((err) => {
+            this.loading = false;
+            const error = err.json();
+            this.errorMessage = error.message;
+            this.ifError = true;
+            setTimeout(() => {
+              this.errorMessage = '';
+              this.ifError = false;
+            }, 5000);
+          });
   }
 }
